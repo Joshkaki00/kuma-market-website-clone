@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuma Market</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      color: #333;
+    }
+
+    /* Navbar default styling (transparent) */
+    .navbar {
+      background-color: transparent;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Navbar scroll styling */
+    .navbar.scrolled {
+      background-color: #ff9900; /* Orange background on scroll */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    }
+
+    .navbar-brand img {
+      height: 40px;
+    }
+
+    .navbar .btn-view-menu {
+      background-color: #ff9900;
+      color: #fff;
+      border-radius: 20px;
+      font-weight: bold;
+      padding: 0.5rem 1.5rem;
+    }
+
+    .navbar .btn-view-menu:hover {
+      background-color: #ff7f00;
+      color: #fff;
+    }
+
+   /* Header Section */
+   .header-section {
+      display: flex;
+      align-items: center;
+      padding: 2rem;
+      height: 100vh;
+      background: #fff;
+      position: relative;
+    }
+    .header-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: url('images/bg-header-digital.svg') no-repeat center center;
+      background-size: cover;
+    }
+    .header-content {
+      width: 50%;
+      z-index: 1;
+      padding-left: 5%;
+    }
+    .header-content h1 {
+      font-size: 8rem; 
+      font-weight: 400;
+      margin: 0;
+      line-height: 1.1;
+    }
+    .header-content h1::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background-color: #ff9900;
+      margin-top: 0.5rem;
+    }
+    .header-content p {
+      font-size: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .header-graphic {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .header-graphic img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Section Title Styling */
+    .section-title {
+      font-weight: 700;
+      color: #333;
+      position: relative;
+      display: inline-block;
+      text-align: center;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background-color: #ff9900;
+      margin: 0.5rem auto 1rem;
+    }
+
+    /* Outline Effect for H2 Headings */
+    h2 {
+      position: relative;
+      font-size: 2rem; /* Adjust size as needed */
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px; /* Adjust spacing below the heading */
+      width: 60px; /* Adjust width of the outline */
+      height: 4px; /* Adjust height of the outline */
+      background-color: #ff9900; /* Color for the outline */
+    }
+
+    /* General card styling with hover effect */
+    .custom-card {
+      border: none;
+      background: #fff; /* No background initially */
+      color: #333;
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      text-align: left;
+    }
+    .custom-card h3 {
+      color: #ff9900;
+      font-size: 1.5rem;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .custom-card p {
+      font-size: 1rem;
+      color: #333;
+      text-align: left;
+    }
+    .custom-card:hover {
+      background: linear-gradient(135deg, #ffcc80, #ffb74d, #ff8f00); /* Gradient on hover */
+      color: #fff;
+    }
+    .custom-card:hover h3,
+    .custom-card:hover p {
+      color: #fff; /* White text on hover */
+    }
+
+    /* Footer Styling */
+    .footer-wave {
+      background: url('images/bg-footer-digital.svg') no-repeat center top;
+      background-size: cover;
+      padding: 3rem 0;
+      color: white;
+    }
+    .footer-dark {
+      background-color: #263239;
+      padding: 1rem 0;
+      color: #bbb;
+      text-align: center;
+    }
+    .footer-dark a {
+      color: #bbb;
+      text-decoration: none;
+    }
+    .footer-dark a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+    .footer-section-title {
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .footer-contact-info {
+      list-style: none;
+      padding: 0;
+      color: white;
+    }
+    .footer-contact-info li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .footer-contact-info li i {
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="images/kuma_market-logo.png" alt="Kuma Market Logo">
+      </a>
+      <div class="ms-auto">
+        <a href="#menu" class="btn btn-view-menu">VIEW MENU</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header Section -->
+  <section class="header-section">
+    <div class="header-content">
+      <h1>Kuma Market</h1>
+      <p>Awesome Japanese Stuffs</p>
+    </div>
+    <div class="header-graphic">
+      <img src="images/store_header.svg" alt="People Shopping Illustration">
+    </div>
+  </section>
+
+<!-- About Section -->
+<div class="container my-5">
+  <h2 class="fw-bold py-4">About Us</h2>
+  <p class="lead text-start">If you love Japanese foods such as sushi, sashimi, teriyaki, bento boxes, and all the exotic fish, you'll love our little market. Here, you'll find a vast collection of items from Japan. Walk into our store, and you'll step into another dimension. We love this small town of San Rafael. This is our home. We want to serve the best products to our family members because we are all family.</p>
+</div>
+
+<!-- Opening Hours Section -->
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-6">
+      <img src="images/store_opening_hours.svg" class="img-fluid mb-4" alt="Opening Hours Graphic">
+    </div>
+    <div class="col-md-6 d-flex align-items-center">
+      <div>
+        <h2 class="fw-bold text-start py-4">Opening Hours</h2>
+        <div class="card custom-card">
+          <div class="card-body">
+            <h3>Everyday</h3>
+            <p class="mb-0">10:30 AM - 7:30 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Special Announcements Section -->
+<div class="container my-5">
+  <h2 class="fw-bold text-center py-4">Special Announcements</h2>
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card custom-card p-4">
+        <h3 class="text-center">Grand Opening!!</h3>
+        <p class="text-start">We are having a soft opening right now. Please come by and take a look. More inventory is on the way.</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card custom-card p-4">
+        <h3 class="text-center">Come see what we have.</h3>
+        <p class="text-start">If you love Japanese items, you'll love our store.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Embedded Map Section -->
+<div class="container my-5">
+  <div class="text-center">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3154.0492624446363!2d-122.533143!3d37.9741069!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808593d6d4b1e5c3%3A0x8b9034c65e5e224!2s1417%204th%20St%20%23c%2C%20San%20Rafael%2C%20CA%2094901!5e0!3m2!1sen!2sus!4v1607398735701!5m2!1sen!2sus" 
+      width="100%" 
+      height="400" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy"></iframe>
+  </div>
+</div>
+
+<!-- Footer Section -->
+<footer>
+  <div class="footer-wave">
+    <div class="container">
+      <div class="row text-center text-md-start">
+        <!-- Contact Info -->
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h5 class="footer-section-title">Contact</h5>
+          <ul class="footer-contact-info">
+            <li><i class="bi bi-house-door-fill"></i> Kuma Market</li>
+            <li><i class="bi bi-geo-alt-fill"></i> 1417 4th Street #C, San Rafael, CA 94901</li>
+            <li><i class="bi bi-telephone-fill"></i> <a href="tel:4152957397" class="text-white text-decoration-none">415-295-7397</a></li>
+          </ul>
+        </div>
+        <!-- Privacy Policy -->
+        <div class="col-md-4 mb-4 mb-md-0 d-flex align-items-center justify-content-center">
+          <h5 class="footer-section-title">Privacy Policy</h5>
+        </div>
+        <!-- Terms of Service -->
+        <div class="col-md-4 mb-4 mb-md-0 d-flex align-items-center justify-content-center">
+          <h5 class="footer-section-title">Terms of Service</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Dark Section for Copyright -->
+  <div class="footer-dark">
+    <p class="mb-0">Powered by Kiolyn.com. © 2019 Kiolyn. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Bootstrap Icons CDN for Icons in Contact Section -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script>
+  // JavaScript to add/remove 'scrolled' class on scroll
+  window.addEventListener("scroll", function() {
+    const navbar = document.querySelector(".navbar");
+    if (window.scrollY > 50) { // Adjust scroll distance as needed
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+</script>
+</body>
+</html>
+
